@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini IT Helpdesk</title>
+    <link rel="stylesheet"href="style.css">
+</head>
+
+<body>
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <h1 class="app-name">Mini Incident Manager</h1>
+    </div>
+    <div class="navbar-right">
+      <input type="text" id="globalSearch" placeholder="Search requests..."/>
+      <div class="profile-icon">👤</div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul>
+      <li class="active">📌 Dashboard</li>
+      <li>📝 Requests</li>
+      <li>⚡ Incidents</li>
+      <li>📊 Reports</li>
+      <li>⚙️ Admin</li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!--Stats Card-->
+    <section class="stats-cards">
+      <div class="card total">
+        <h3>Total Requests</h3>
+        <p id ="totalCount">0</p>
+      </div>
+      <div class="card open">
+        <h3>Open</h3>
+        <p id="openCount">0</p>
+      </div>
+      <div class="card inprogress">
+        <h3>In Progress</h3>
+        <p id="progressCount">0</p>
+      </div>
+      <div class="card closed">
+        <h3>Closed</h3>
+        <p id="closedCount">0</p>
+      </div>
+    </section>
+
+    <!-- Request Form -->
+    <section>
+      <h2>Submit a Request</h2>
+      <form id="requestForm">
+        <input type="text" id="name" placeholder="Your Name" required><br><br>
+        <input type="email" id="email" placeholder="Your email" required><br><br>
+        <input type="text" id="title" placeholder="Issue Title" required><br><br>
+        <textarea id="description" placeholder="Describe your Issue"></textarea><br><br>
+
+        <label for="priority">Priority:</label>
+        <select id="priority" required>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select><br><br>
+
+        <button type="submit">Submit Request</button>
+      </form>
+    </section>
+
+    <!-- Requests Section -->
+    <section>
+      <h2>All Requests</h2>
+      <div class="filters">
+        <label for="statusFilter">Filter by Status: </label>
+        <select id="statusFilter">
+          <option value="">All</option>
+          <option value="Open">Open</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Closed">Closed</option>
+        </select>
+        <button id="resetFilter">Reset</button>
+      </div>
+
+      <table border="1" id="requestsTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Title</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- API Test Section -->
+    <section>
+      <h2>API Test</h2>
+      <button id="testApiBtn">Check API</button>
+      <p id="result"></p>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer"></div>
+
+  <script src="script.js"></script>
+</body>
